@@ -7,8 +7,9 @@ const router = new VueRouter({
   mode: 'history',
   routes: [
     //配置默认的路径，默认显示登录页
-    { path: '/', redirect: '/index' },
-    { path: '/index', component: () => import('@/views/index') },
+    { path: '/', redirect: '/config' },
+    { path: '/config', component: () => import('@/views/config') },
+    { path: '/log', component: () => import('@/views/log') },
   ]
 })
 
