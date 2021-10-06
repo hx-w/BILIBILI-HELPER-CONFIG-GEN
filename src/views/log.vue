@@ -3,7 +3,7 @@
     <el-header><h1 align="center">BILIBILI-HELPER日志</h1></el-header>
     <el-main>
       <el-card class="box-card">
-      <div class="text-wrapper" align="center" style="font-size:18px;"><span>{{ log }}</span></div>
+      <div class="text-wrapper" style="font-size:18px;"><span>{{ log }}</span></div>
       </el-card>
     </el-main>
   </el-container>
