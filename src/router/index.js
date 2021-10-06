@@ -6,10 +6,9 @@ Vue.use(VueRouter) //安装插件
 const router = new VueRouter({
   mode: 'history',
   routes: [
-    //配置默认的路径，默认显示登录页
+    { path: '/log', component: () => import('@/views/log') },
     { path: '/', redirect: '/config' },
     { path: '/config', component: () => import('@/views/config') },
-    { path: '/log', component: () => import('@/views/log') },
   ]
 })
 
