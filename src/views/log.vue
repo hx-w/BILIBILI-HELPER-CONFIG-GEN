@@ -19,7 +19,7 @@ export default {
     let code = this.$route.query.code;
     if (!code) return;
     this.$http
-      .get("http://ci.csgowiki.top:8080/query_log?code=" + code)
+      .get("https://ci.csgowiki.top:8080/query_log?code=" + code)
       .then((response) => {
         console.log(response.data);
         this.log = response.data;
