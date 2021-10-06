@@ -11,6 +11,8 @@
     "axios": "^0.22.0",
     "core-js": "^3",
     "element-ui": "^2.15.6",
+    "glob-parent": "5.1.2",
+    "set-value": "4.0.1",
     "vue": "^2.6.11",
     "vue-json-viewer": "^2.2.19",
     "vue-router": "^3.5.2",

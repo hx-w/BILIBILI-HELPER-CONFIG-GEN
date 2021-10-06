@@ -2,7 +2,7 @@
   <el-container>
     <el-header><h1 align="center">BILIBILI-HELPER日志</h1></el-header>
     <el-main>
-      <div>{{ log }}</div>
+      <div class="text-wrapper">{{ log }}</div>
     </el-main>
   </el-container>
 </template>
@@ -20,13 +20,16 @@ export default {
     if (!code) return;
     this.$http
       .get("http://ci.csgowiki.top:8080/query_log?code=" + code)
-      .then(function (response) {
-        console.log(response);
-      })
-      .catch(function (error) {
-        console.log(error);
+      .then((response) => {
+        console.log(response.data);
+        this.log = response.data;
       });
-    this.log = code;
   },
 };
 </script>
+
+<style scoped>
+.text-wrapper {
+  white-space: pre-wrap;
+}
+</style>
