@@ -4,11 +4,11 @@ import VueRouter from 'vue-router' //引入 Vue 路由
 Vue.use(VueRouter) //安装插件
 
 const router = new VueRouter({
-  mode: 'history',
+  mode: 'hash',
   routes: [
-    { path: '/log', component: () => import('@/views/log') },
     { path: '/', redirect: '/config' },
-    { path: '/config', component: () => import('@/views/config') },
+    { path: '/log', name: 'log', component: () => import('@/views/log') },
+    { path: '/config', name: 'config', component: () => import('@/views/config') },
   ]
 })
 
