@@ -9,6 +9,7 @@ const router = new VueRouter({
     { path: '/', redirect: '/config' },
     { path: '/log', name: 'log', component: () => import('@/views/log') },
     { path: '/config', name: 'config', component: () => import('@/views/config') },
+    { path: '/scu', name: 'scu', component: () => import('@/views/scu-check') },
   ]
 })
 
