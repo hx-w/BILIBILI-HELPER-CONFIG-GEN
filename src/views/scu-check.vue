@@ -19,9 +19,13 @@
             :rows="5"
             type="textarea"
           ></el-input>
-        <el-link type="info" href="https://wfw.scu.edu.cn/ncov/wap/default/index" target="_blank">健康每日报网页链接</el-link>
+          <el-link
+            type="info"
+            href="https://wfw.scu.edu.cn/ncov/wap/default/index"
+            target="_blank"
+            >健康每日报网页链接</el-link
+          >
         </el-form-item>
-
 
         <el-form-item label="每日打卡时间">
           <el-time-select
@@ -40,6 +44,9 @@
             v-model="scu.qqid"
             placeholder="填写自己的QQ用于接受打卡回执，留空为不接受回执。"
           ></el-input>
+        </el-form-item>
+        <el-form-item label="Access Token">
+          <el-input v-model="accessToken" show-password></el-input>
         </el-form-item>
         <br />
         <el-form-item align="left">
@@ -74,6 +81,7 @@ export default {
         triggerTime: "00:10",
         qqid: "",
       },
+      accessToken: "",
       preview: "请点击'预览'",
     };
   },
@@ -81,7 +89,8 @@ export default {
     this.scu.userAgent = navigator.userAgent;
     this.$notify.success({
       title: "提示",
-      message: "如果你需要每日打卡消息回执，请主动添加QQ(机器人)：3583618673，验证消息填：7355608",
+      message:
+        "如果你需要每日打卡消息回执，请主动添加QQ(机器人)：3583618673，验证消息填：7355608",
       duration: 0,
     });
   },
@@ -107,9 +116,10 @@ export default {
         this.$message.error("请先点击预览，再点击提交");
         return;
       }
-    //   this.scu.triggerTime = "14:09"
+      var postData = this.scu;
+      postData["accessToken"] = this.accessToken;
       axios
-        .post("https://ci.csgowiki.top:8080/set_checkin", this.scu)
+        .post("https://ci.csgowiki.top:8080/set_checkin", postData)
         .then((res) => {
           if (res.status == 200) {
             this.$message({
@@ -118,6 +128,13 @@ export default {
             });
           } else if (res.status == 403) {
             this.$message.error("错误：" + res.data["detail"]);
+          } else {
+            this.$message.error("出现了一些错误，请检查表单是否填写正确");
+          }
+        })
+        .catch((res) => {
+          if (res.response.status == 403) {
+            this.$message.error("错误：" + res.response.data["detail"]);
           } else {
             this.$message.error("出现了一些错误，请检查表单是否填写正确");
           }
