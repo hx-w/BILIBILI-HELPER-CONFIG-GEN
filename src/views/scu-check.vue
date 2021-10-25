@@ -107,6 +107,7 @@ export default {
         this.$message.error("请先点击预览，再点击提交");
         return;
       }
+    //   this.scu.triggerTime = "14:09"
       axios
         .post("https://ci.csgowiki.top:8080/set_checkin", this.scu)
         .then((res) => {
