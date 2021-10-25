@@ -1,5 +1,5 @@
 <template>
-  <el-col :span="23">
+  <el-col :span="22">
     <el-container style="solid #eee">
       <el-header><h1 align="center">SCU健康每日报自动打卡工作流</h1></el-header>
       <br />
@@ -20,7 +20,7 @@
             type="textarea"
           ></el-input>
           <el-link
-            type="info"
+            type="primary"
             href="https://wfw.scu.edu.cn/ncov/wap/default/index"
             target="_blank"
             >健康每日报网页链接</el-link
@@ -119,7 +119,7 @@ export default {
       var postData = this.scu;
       postData["accessToken"] = this.accessToken;
       axios
-        .post("https://ci.csgowiki.top:8080/set_checkin", postData)
+        .post("https://ci.csgowiki.top:12121/set_checkin", postData)
         .then((res) => {
           if (res.status == 200) {
             this.$message({
@@ -145,9 +145,9 @@ export default {
 };
 </script>
 <style scoped>
-body {
-  background: #20262e;
+.el-container {
   padding: 20px;
   font-family: Helvetica;
+  margin-top: 20px;
 }
 </style>
