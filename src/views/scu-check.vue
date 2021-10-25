@@ -135,9 +135,9 @@ export default {
         .catch((res) => {
           if (res.response.status == 403) {
             this.$message.error("错误：" + res.response.data["detail"]);
-          } else {
-            this.$message.error("出现了一些错误，请检查表单是否填写正确");
+            return;
           }
+          this.$message.error("出现了一些错误，请检查表单是否填写正确");
         });
     },
   },
