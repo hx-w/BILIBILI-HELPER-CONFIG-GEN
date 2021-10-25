@@ -5,6 +5,7 @@ Vue.use(VueRouter) //安装插件
 
 const router = new VueRouter({
   mode: 'history',
+  base: '/',
   routes: [
     // { path: '/', redirect: '/auto-checkin' },
     { path: '/', name: 'scu', component: () => import('@/views/scu-check') },
