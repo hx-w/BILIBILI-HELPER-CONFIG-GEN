@@ -13,7 +13,7 @@
             v-model="scu.uuid"
             placeholder="
 使用Chrome或Edge登录https://wfw.scu.edu.cn/ncov/wap/default/index（健康每日报网页版）
-右键网页空白处，选择'显示网页源代码'
+右键网页空白处，选择'显示网页源代码' (或CTRL+U)
 将网页中所有源代码复制粘贴到这里即可
 "
             :rows="5"
@@ -133,6 +133,7 @@ export default {
           }
         })
         .catch((res) => {
+          console.log(res)
           if (res.response.status == 403) {
             this.$message.error("错误：" + res.response.data["detail"]);
             return;
